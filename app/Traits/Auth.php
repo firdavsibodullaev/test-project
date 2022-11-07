@@ -18,12 +18,12 @@ trait Auth
     public function generateToken(): string
     {
         $user_id = auth()->id();
-        $random_string = bin2hex(random_bytes(32));
+        $token = bin2hex(random_bytes(32));
 
-        $token = Crypt::encrypt("$user_id|$random_string");
+        $encrypted_string = Crypt::encrypt($token);
 
-        cache()->put(CacheKeys::TOKEN->getKeys($user_id), $token, now()->addMinutes(5));
+        cache()->put(CacheKeys::TOKEN->getKeys($user_id), "$user_id|$token", now()->addMinutes(5));
 
-        return $token;
+        return "$user_id|$encrypted_string";
     }
 }
