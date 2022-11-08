@@ -22,8 +22,12 @@ trait Auth
 
         $encrypted_string = Crypt::encrypt($token);
 
-        cache()->put(CacheKeys::TOKEN->getKeys($user_id), "$user_id|$token", now()->addMinutes(5));
+        cache()->put(
+            CacheKeys::TOKEN->getKeys($user_id),
+            sprintf("%d|%s", $user_id, $token),
+            now()->addMinutes(5)
+        );
 
-        return "$user_id|$encrypted_string";
+        return sprintf("%d|%s", $user_id, $encrypted_string);
     }
 }
