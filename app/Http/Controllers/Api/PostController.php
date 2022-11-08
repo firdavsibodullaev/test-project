@@ -25,6 +25,6 @@ class PostController extends Controller
             "id" => $record->id,
             "lifetime" => round((microtime(true) - LARAVEL_START) * 1000, 2) . " ms",
             "memory" => round(memory_get_usage() / 1024 / 1024, 2) . " MB"
-        ]);
+        ], 201);
     }
 }
