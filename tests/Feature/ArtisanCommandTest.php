@@ -2,16 +2,17 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Tests\TestCase;
 
 class ArtisanCommandTest extends TestCase
 {
     public function test_success_console_auth()
     {
+        $user = User::factory()->create();
         $this->artisan('auth:login')
-            ->expectsQuestion("Enter username", "admin")
-            ->expectsQuestion("Enter password", "admin")
+            ->expectsQuestion("Enter username", $user->username)
+            ->expectsQuestion("Enter password", "password")
             ->expectsOutputToContain("Authorized successfully")
             ->expectsOutputToContain("Token:")
             ->assertSuccessful();
