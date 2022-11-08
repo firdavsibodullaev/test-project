@@ -45,7 +45,7 @@ class AuthCommand extends Command
         $token = $this->generateToken();
         $this->components->info("Authorized successfully");
         $this->components->warn("Your token expires in 5 minutes");
-        $this->info("Token: $token");
+        $this->info(sprintf("Token: %s", $token));
 
         return CommandAlias::SUCCESS;
     }
