@@ -21,9 +21,9 @@ class RecordService
 
     /**
      * @param array $payload
-     * @return Model|Builder
+     * @return Post
      */
-    public function create(array $payload): Model|Builder
+    public function create(array $payload): Post
     {
         return Post::query()->create([
             "data" => $payload
