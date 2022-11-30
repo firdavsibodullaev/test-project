@@ -42,7 +42,7 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-> You can use pgsql instead of mysql in DB_CONNECTION to use PostgreSQL driver
+> You can use `pgsql` instead of mysql in DB_CONNECTION to use PostgreSQL driver
 
 #### After configuration of database you need migrate tables into database.
 
