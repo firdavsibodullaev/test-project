@@ -1,57 +1,11 @@
 ## Server Requirements
 
-- PHP >= 8.1
-- BCMath PHP Extension
-- Ctype PHP Extension
-- cURL PHP Extension
-- DOM PHP Extension
-- Fileinfo PHP Extension
-- JSON PHP Extension
-- Mbstring PHP Extension
-- OpenSSL PHP Extension
-- PCRE PHP Extension
-- PDO PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
+For server requirements look [here](https://laravel.com/docs/9.x/deployment#server-requirements)
 
 ## Server Configuration
 
-Configuration of Nginx
+Configuration of Nginx is [here](https://laravel.com/docs/9.x/deployment#nginx)
 
-```nginx
-server {
-    listen 80;
-    listen [::]:80;
-    server_name example.com;
-    root /var/www/project-path;
- 
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-Content-Type-Options "nosniff";
- 
-    index index.php;
- 
-    charset utf-8;
- 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
- 
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
- 
-    error_page 404 /index.php;
- 
-    location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
- 
-    location ~ /\.(?!well-known).* {
-        deny all;
-    }
-}
-```
 
 ## Installation
 
